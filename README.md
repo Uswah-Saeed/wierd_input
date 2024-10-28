@@ -1,0 +1,1 @@
+# wierd_input
