@@ -1,20 +1,21 @@
-using System.IO.Ports;
 using UnityEngine;
+using System.IO.Ports;
 
-public class ArduinoDataReceiver : MonoBehaviour
+public class ArduinoDataReader : MonoBehaviour
 {
-    SerialPort serialPort = new SerialPort("COM12", 9600);  // Replace "COM3" with your port name
-    public float accelX, accelY, accelZ;
-    public float magX, magY, magZ;
+    
+    // Define the serial port and baud rate
+    SerialPort serialPort = new SerialPort("COM12", 9600); // Adjust "COM3" to your Arduino port
+
+    // Variables to store the sensor values
+    private float accelX, accelY, accelZ;
+    private int magX, magY, magZ;
 
     void Start()
     {
         // Open the serial port
-        if (!serialPort.IsOpen)
-        {
-            serialPort.Open();
-            serialPort.ReadTimeout = 100;  // Set read timeout
-        }
+        serialPort.Open();
+        serialPort.ReadTimeout = 1000; // Set a timeout for reading
     }
 
     void Update()
@@ -23,48 +24,41 @@ public class ArduinoDataReceiver : MonoBehaviour
         {
             try
             {
+                // Read data from Arduino
                 string data = serialPort.ReadLine();
-                ParseData(data);
+
+                // Parse data assuming the format is "| ADXL345 Acc[mg]: x y z | Mag[mGauss]: x y z |"
+                string[] values = data.Split(' ');
+
+                // Ensure the received data is in the expected format
+                if (values.Length >= 11)
+                {
+                    // Parse accelerometer values
+                    accelX = float.Parse(values[3]);
+                    accelY = float.Parse(values[4]);
+                    accelZ = float.Parse(values[5]);
+
+                    // Parse magnetometer values
+                    magX = int.Parse(values[8]);
+                    magY = int.Parse(values[9]);
+                    magZ = int.Parse(values[10]);
+
+                    // Output parsed data
+                    Debug.Log($"Accelerometer [mg]: X={accelX} Y={accelY} Z={accelZ}");
+                    Debug.Log($"Magnetometer [mGauss]: X={magX} Y={magY} Z={magZ}");
+                }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                // Handle exceptions or timeouts here
+                Debug.LogError("Error reading data: " + e.Message);
             }
-        }
-    }
-
-    void ParseData(string data)
-    {
-        // Expected format: "| ADXL345 Acc[mg]: x y z | Mag[mGauss]: mx my mz |"
-        if (data.Contains("ADXL345 Acc[mg]:") && data.Contains("Mag[mGauss]:"))
-        {
-            // Split and parse the values
-            string[] parts = data.Split('|');
-
-            // Parse accelerometer values
-            string[] accData = parts[1].Split(' ');
-            accelX = float.Parse(accData[3]);
-            accelY = float.Parse(accData[4]);
-            accelZ = float.Parse(accData[5]);
-
-            // Parse magnetometer values
-            string[] magData = parts[2].Split(' ');
-            magX = float.Parse(magData[3]);
-            magY = float.Parse(magData[4]);
-            magZ = float.Parse(magData[5]);
-
-            // Display in Unity Console (for testing)
-            Debug.Log($"Accelerometer - X: {accelX}, Y: {accelY}, Z: {accelZ}");
-            Debug.Log($"Magnetometer - X: {magX}, Y: {magY}, Z: {magZ}");
         }
     }
 
     void OnApplicationQuit()
     {
-        // Close the serial port when Unity application stops
+        // Close the serial port when the application ends
         if (serialPort.IsOpen)
-        {
             serialPort.Close();
-        }
     }
 }
