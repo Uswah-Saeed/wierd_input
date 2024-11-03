@@ -102,6 +102,10 @@ public class CatapultController : MonoBehaviour
         }
     }
 
+    public void ShootBall()
+    {
+        StartCoroutine(ShootSequence_IE());
+    }
     private void UpdateTrajectory()
     {
         Vector3 velocity = GetLanchDirection() * GetFinalForce();

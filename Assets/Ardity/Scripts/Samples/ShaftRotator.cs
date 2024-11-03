@@ -6,7 +6,8 @@ public class ShaftRotator : MonoBehaviour
     public float smoothingSpeed = 5f;     // Normal smoothing factor for interpolation
     public float shootSmoothingSpeed = 20f; // Increased smoothing factor when shooting
     private Vector3 targetRotation = Vector3.zero;
-
+    [SerializeField]
+    CatapultController controller;
     // Define your accelerometer value range and rotation angle range
     private float accelerometerMin = 2.39f; // Minimum accelerometer value
     private float accelerometerMax = 10f;    // Maximum accelerometer value
@@ -59,6 +60,8 @@ public class ShaftRotator : MonoBehaviour
     // Function to be called when the condition is met
     private void Shoot()
     {
+
+        controller.ShootBall();
         // Placeholder for shooting logic
         Debug.Log("Shoot function called!");
 
