@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ShaftRotator : MonoBehaviour
 {
+    [SerializeField] CatapultRotator catapultScript;
     public Transform shaft;               // Reference to the shaft object you want to rotate
     public float smoothingSpeed = 5f;     // Normal smoothing factor for interpolation
     public float shootSmoothingSpeed = 20f; // Increased smoothing factor when shooting
@@ -26,7 +27,7 @@ public class ShaftRotator : MonoBehaviour
 
             // Calculate the mapped rotation angle based on accelerometer value
             float rotationAngle = Map(currentValue, accelerometerMin, accelerometerMax, rotationMin, rotationMax);
-            targetRotation = new Vector3(rotationAngle, 0, 0);
+            targetRotation = new Vector3(rotationAngle, catapultScript.catapult.localEulerAngles.y, 0);
 
             // Determine the current smoothing speed based on whether we're shooting
             float currentSmoothingSpeed = isShooting ? shootSmoothingSpeed : smoothingSpeed;
