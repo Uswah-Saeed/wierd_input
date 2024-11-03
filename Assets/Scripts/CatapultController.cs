@@ -22,9 +22,9 @@ public class CatapultController : MonoBehaviour
 
     [Header("Trajectory")]
     [SerializeField] private LineRenderer trajectoryLine;
-    [SerializeField] private int trajectoryPoints = 50;
-    [SerializeField] private float trajectoryTimeStep = 0.05f;
-    [SerializeField] private Vector3 direction = Vector3.right;
+    [Range(10,50)][SerializeField] private int trajectoryPoints = 50;
+    [Range(0.01f, 0.1f)][SerializeField] private float trajectoryTimeStep = 0.05f;
+    [SerializeField] private Vector3 direction = Vector3.up;
 
     private float currentAngle;
     private float currentRotationAngle = 0f;
@@ -127,7 +127,8 @@ public class CatapultController : MonoBehaviour
         float pullbackRange = restingAngle - minAngle;
         float currentPullback = restingAngle - currentAngle;
         float powerPercentage = currentPullback / pullbackRange;
-        float finalForce = baseShootingForce * (1 + powerPercentage * 2);
+        float finalForce = baseShootingForce * (1 + powerPercentage * 10);
+        print(finalForce);
         return finalForce; // final force based on how much the arm is down
     }
 
