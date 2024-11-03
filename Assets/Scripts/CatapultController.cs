@@ -14,6 +14,7 @@ public class CatapultController : MonoBehaviour
     [SerializeField] private float baseShootingForce = 15f;
     [SerializeField] private float snapSpeed = 200f;     // shooting speed
     [SerializeField] private float maxRotationAngle = 20f;  // max rotation in each dir
+    [SerializeField] private float forceFactor = 15f;  // max rotation in each dir
 
     [Header("Projectile")]
     [SerializeField] private GameObject projectilePrefab;
@@ -30,8 +31,14 @@ public class CatapultController : MonoBehaviour
     private float currentRotationAngle = 0f;
     private bool isShooting;
     private bool canShoot = true;
+    public static CatapultController instance;
+    public GameObject Enemy;
     #endregion
+    private void Awake()
+    {
+        instance=this;
 
+    }
     private void Start()
     {
         currentAngle = restingAngle;
@@ -131,7 +138,7 @@ public class CatapultController : MonoBehaviour
         float pullbackRange = restingAngle - minAngle;
         float currentPullback = restingAngle - currentAngle;
         float powerPercentage = currentPullback / pullbackRange;
-        float finalForce = baseShootingForce * (1 + powerPercentage * 10);
+        float finalForce = baseShootingForce * (1 + powerPercentage * forceFactor);
         print(finalForce);
         return finalForce; // final force based on how much the arm is down
     }
