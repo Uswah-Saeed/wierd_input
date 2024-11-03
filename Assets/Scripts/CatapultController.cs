@@ -196,5 +196,6 @@ public class CatapultController : MonoBehaviour
 
         isShooting = false;
         canShoot = true;
+        
     }
 }

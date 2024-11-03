@@ -37,10 +37,25 @@ public class ShaftRotator : MonoBehaviour
             Quaternion targetQuaternion = Quaternion.Euler(targetRotation);
             shaft.rotation = Quaternion.Lerp(currentRotation, targetQuaternion, currentSmoothingSpeed * Time.deltaTime);
 
+            if (currentValue > 3 && lastValue < 3)
+            {
+
+                CameraController.Instance.ZoomOut();
+
+
+            }
             // Check for the condition to call the Shoot function
             if ((currentValue >= -1 && currentValue <= 3 && lastValue > 4) || (currentValue >= -1 && currentValue <= 3 && lastValue < -10))
             {
                 Shoot(); // Call the Shoot function
+             
+            }
+
+            if (currentValue >3 && lastValue<3) {
+            
+                    CameraController.Instance.ZoomOut();
+            
+            
             }
 
             // Update lastValue for the next frame
@@ -68,10 +83,11 @@ public class ShaftRotator : MonoBehaviour
         // Optionally, start a coroutine to reset the shooting state after a short duration
         Invoke(nameof(ResetShoot), 0.5f); // Adjust the time as needed
         controller.ShootBall();
+        CameraController.Instance.ZoomIn();
         // Placeholder for shooting logic
-      
 
-       
+
+
     }
 
     // Function to reset shooting state
