@@ -25,7 +25,7 @@ public class SampleMessageListener : MonoBehaviour
         {
             msgValue = value*-1;
         }
-       // Debug.Log("Message arrived: " + msg);
+        Debug.Log("Message arrived: " + msg);
     }
 
     // Invoked when a connect/disconnect event occurs. The parameter 'success'

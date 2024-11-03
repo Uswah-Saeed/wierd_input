@@ -37,7 +37,7 @@ public class ShaftRotator : MonoBehaviour
             shaft.rotation = Quaternion.Lerp(currentRotation, targetQuaternion, currentSmoothingSpeed * Time.deltaTime);
 
             // Check for the condition to call the Shoot function
-            if (currentValue >= 1 && currentValue <= 3 && lastValue > 4)
+            if ((currentValue >= -1 && currentValue <= 3 && lastValue > 4) || (currentValue >= -1 && currentValue <= 3 && lastValue < -10))
             {
                 Shoot(); // Call the Shoot function
             }
@@ -60,16 +60,17 @@ public class ShaftRotator : MonoBehaviour
     // Function to be called when the condition is met
     private void Shoot()
     {
-
-        controller.ShootBall();
-        // Placeholder for shooting logic
         Debug.Log("Shoot function called!");
-
         // Increase rotation speed temporarily
         isShooting = true;
 
         // Optionally, start a coroutine to reset the shooting state after a short duration
         Invoke(nameof(ResetShoot), 0.5f); // Adjust the time as needed
+        controller.ShootBall();
+        // Placeholder for shooting logic
+      
+
+       
     }
 
     // Function to reset shooting state
