@@ -5,9 +5,10 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float lifetime = 5f;
     private Rigidbody rb;
     private TrailRenderer trail;
-    
+     Health E_Health;
     private void Start()
     {
+        E_Health = CatapultController.instance.Enemy.GetComponent<Health>();
         rb = GetComponent<Rigidbody>();
         trail = GetComponent<TrailRenderer>();
         
@@ -27,13 +28,18 @@ public class Projectile : MonoBehaviour
         {
             trail.enabled = false;
         }
-        
+        if (collision.gameObject.CompareTag("Ship"))
+        {
+            print("hit");
+            E_Health.TakeDamage(10);
+
+        }
         // todo: impact effects
         //        
         //
-        
+
         GetComponent<Collider>().enabled = false;
         
-        Destroy(gameObject, 0.5f);
+        Destroy(gameObject, 0.1f);
     }
 }
