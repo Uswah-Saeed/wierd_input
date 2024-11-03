@@ -1,19 +1,34 @@
-using System.IO.Ports;
 using UnityEngine;
+using System.IO.Ports;
+using System.Collections;
 
-public class ArduinoDataReceiver : MonoBehaviour
+public class ArduinoDataReader : MonoBehaviour
 {
-    SerialPort serialPort = new SerialPort("COM12", 9600);  // Replace "COM3" with your port name
-    public float accelX, accelY, accelZ;
-    public float magX, magY, magZ;
+    SerialPort serialPort = new SerialPort("COM12", 9600); // Adjust "COM12" to your Arduino port
+    private float accelY;
+    private float prevAccelY;
+    public Vector3 acceleration;
+    private float previousY;
+    public float rotationScale = 30f;
+    public Transform shaftTransform;
+    public float interpolationDuration = 0.1f; // Time for smooth transition between points
+
+    private Coroutine rotationCoroutine;
+
+    public Rigidbody objectToShoot;  // Rigidbody to apply force to
+    private Transform initialPosition;
+    private float thresholdY = 10f;  // Define a threshold for Y acceleration to trigger shooting
 
     void Start()
     {
-        // Open the serial port
-        if (!serialPort.IsOpen)
+        serialPort.Open();
+        serialPort.ReadTimeout = 1000;
+        Debug.Log("Serial port opened.");
+
+        // Store the initial position of the object to shoot
+        if (objectToShoot != null)
         {
-            serialPort.Open();
-            serialPort.ReadTimeout = 100;  // Set read timeout
+            initialPosition = objectToShoot.transform;
         }
     }
 
@@ -24,47 +39,77 @@ public class ArduinoDataReceiver : MonoBehaviour
             try
             {
                 string data = serialPort.ReadLine();
-                ParseData(data);
+                string[] values = data.Split(' ');
+
+                if (values.Length >= 11)
+                {
+                   
+                    acceleration.y = float.Parse(values[4]);
+                   // Debug.Log($"Raw accelY: {accelY}");
+
+                    // Start smooth rotation coroutine when new data arrives
+                  
+
+                    // Check for shooting condition
+                    DetectSuddenChange();
+
+                }
+                else
+                {
+                    Debug.LogWarning("Unexpected data format.");
+                }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                // Handle exceptions or timeouts here
+                Debug.LogError("Error reading data: " + e.Message);
             }
         }
     }
 
-    void ParseData(string data)
+    
+
+   
+    
+    void ResetObject()
     {
-        // Expected format: "| ADXL345 Acc[mg]: x y z | Mag[mGauss]: mx my mz |"
-        if (data.Contains("ADXL345 Acc[mg]:") && data.Contains("Mag[mGauss]:"))
+        if (objectToShoot != null)
         {
-            // Split and parse the values
-            string[] parts = data.Split('|');
-
-            // Parse accelerometer values
-            string[] accData = parts[1].Split(' ');
-            accelX = float.Parse(accData[3]);
-            accelY = float.Parse(accData[4]);
-            accelZ = float.Parse(accData[5]);
-
-            // Parse magnetometer values
-            string[] magData = parts[2].Split(' ');
-            magX = float.Parse(magData[3]);
-            magY = float.Parse(magData[4]);
-            magZ = float.Parse(magData[5]);
-
-            // Display in Unity Console (for testing)
-            Debug.Log($"Accelerometer - X: {accelX}, Y: {accelY}, Z: {accelZ}");
-            Debug.Log($"Magnetometer - X: {magX}, Y: {magY}, Z: {magZ}");
+            objectToShoot.transform.position = initialPosition.position;  // Reset position
+            objectToShoot.linearVelocity = Vector3.zero;  // Reset velocity to prevent drifting
         }
     }
 
     void OnApplicationQuit()
     {
-        // Close the serial port when Unity application stops
         if (serialPort.IsOpen)
-        {
             serialPort.Close();
+        Debug.Log("Serial port closed.");
+    }
+
+    void DetectSuddenChange()
+    {
+        //Debug.Log($"Previous Y: {previousY}, Current Y: {acceleration.y}");
+
+        if (previousY >= 6 && previousY <= 12 && acceleration.y < 10)
+        {
+            Debug.Log("Detected a jump on Y-axis.");
+            ApplyImpulseForce();
+        }
+
+        previousY = acceleration.y;
+    }
+
+    void ApplyImpulseForce()
+    {
+        if (objectToShoot != null)
+        {
+            Debug.Log("Applying impulse force to the object!");
+            objectToShoot.AddForce(Vector3.up * 5f, ForceMode.Impulse);
+            
+        }
+        else
+        {
+            Debug.LogWarning("No object assigned to shoot.");
         }
     }
 }
