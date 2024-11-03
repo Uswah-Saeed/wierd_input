@@ -18,12 +18,19 @@ public class SampleMessageListener : MonoBehaviour
 {
 
     public static float msgValue;
+    public static float msg2Value;
     // Invoked when a line of data is received from the serial device.
     void OnMessageArrived(string msg)
     {
-        if (float.TryParse(msg, out float value))
+        string[] values = msg.Split(',');
+        if (float.TryParse(values[0], out float value))
         {
             msgValue = value*-1;
+        }
+
+        if (float.TryParse(values[1], out float value2))
+        {
+            msg2Value = value2;
         }
         Debug.Log("Message arrived: " + msg);
     }
