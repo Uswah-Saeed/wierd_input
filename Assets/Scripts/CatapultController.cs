@@ -66,6 +66,12 @@ public class CatapultController : MonoBehaviour
         }
     }
 
+    public void YInput(){
+        currentAngle = Mathf.Max(minAngle, currentAngle - rotationSpeed * Time.deltaTime);
+            UpdateArmRotation();
+            UpdateTrajectory();
+    }
+
     private void HandleInput()
     {
         if (Input.GetKey(KeyCode.DownArrow))
