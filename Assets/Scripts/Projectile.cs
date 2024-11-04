@@ -6,6 +6,8 @@ public class Projectile : MonoBehaviour
     private Rigidbody rb;
     private TrailRenderer trail;
      Health E_Health;
+
+    [SerializeField] GameObject explosion;
     private void Start()
     {
         E_Health = CatapultController.instance.Enemy.GetComponent<Health>();
@@ -38,6 +40,10 @@ public class Projectile : MonoBehaviour
         // todo: impact effects
         //        
         //
+        GameObject vfx = Instantiate(explosion,this.transform.position,Quaternion.identity);
+        vfx.GetComponent<ParticleSystem>().Play();
+        Destroy(vfx,2f);
+        SoundManager.Instance.PlayProjectileHitSound();
 
         GetComponent<Collider>().enabled = false;
         
