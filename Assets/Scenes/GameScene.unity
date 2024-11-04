@@ -42,8 +42,7 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 13
-  m_BakeOnSceneLoad: 0
+  serializedVersion: 12
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -23280,8 +23279,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4.5482693, y: 2.8091683, z: 6.19619}
-  m_Center: {x: 0.19069004, y: 1.4115288, z: -0.21026659}
+  m_Size: {x: 26.188095, y: 3.62, z: 21.02}
+  m_Center: {x: 5.4028816, y: 1.4115288, z: -4.73}
 --- !u!114 &1520452686
 MonoBehaviour:
   m_ObjectHideFlags: 0
