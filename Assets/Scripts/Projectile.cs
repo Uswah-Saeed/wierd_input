@@ -31,6 +31,7 @@ public class Projectile : MonoBehaviour
         if (collision.gameObject.CompareTag("Ship"))
         {
             print("hit");
+
             E_Health.TakeDamage(10);
 
         }
