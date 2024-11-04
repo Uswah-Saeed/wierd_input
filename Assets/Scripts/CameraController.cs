@@ -16,7 +16,7 @@ public class CameraController : MonoBehaviour
     Tweener cameraTweener;
     public void ZoomOut()
     {
-        cameraTweener ??= mainCamera.DOFieldOfView(68, 1)
+        cameraTweener ??= mainCamera.DOFieldOfView(75, 1)
         .SetEase(Ease.OutCirc)
         .OnComplete(() =>
         {
