@@ -21,17 +21,15 @@ public class EnemyProjectile : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-
         if (collision.gameObject.CompareTag("Catapult"))
         {
-            print("Hit");
+            CameraController.Instance.CameraShake();
             P_Health.TakeDamage(10);
             GameObject vfx = Instantiate(explosion, this.transform.position, Quaternion.identity);
             vfx.GetComponent<ParticleSystem>().Play();
             Destroy(vfx, 2f);
             SoundManager.Instance.PlayProjectileHitSound();
             Destroy(gameObject, 0.1f);
-
         }
     }
 }

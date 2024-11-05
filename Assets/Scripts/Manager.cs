@@ -20,12 +20,16 @@ public class Manager : MonoBehaviour
 
     private void Awake()
     {
-        instance=this;
+        instance = this;
 
-        menuButton.onClick.AddListener(() => {
+        menuButton.onClick.AddListener(() =>
+        {
+            SoundManager.Instance.PlayUIButtonSound();
             SceneManager.LoadScene(0);
         });
-        replayButton.onClick.AddListener(() => {
+        replayButton.onClick.AddListener(() =>
+        {
+            SoundManager.Instance.PlayUIButtonSound();
             SceneManager.LoadScene(1);
         });
     }
@@ -42,15 +46,17 @@ public class Manager : MonoBehaviour
         BattleScene.SetActive(false);
         if (isWin)
         {
-            Win.SetActive(true); Lose.SetActive(false);  
+            Win.SetActive(true); 
+            Lose.SetActive(false);
+            SoundManager.Instance.PlaySuccessSound();
         }
         else
         {
-            Win.SetActive(false); Lose.SetActive(true);
-
+            Win.SetActive(false); 
+            Lose.SetActive(true);
+            SoundManager.Instance.PlayFailureSound();
         }
     }
-
 
     public void ShipMovement()
     {
@@ -60,7 +66,5 @@ public class Manager : MonoBehaviour
         Ship.transform.DORotate(new Vector3(0, 0, swayAngle), swayDuration)
          .SetLoops(-1, LoopType.Yoyo)
          .SetEase(Ease.InOutSine);
-
-
     }
 }

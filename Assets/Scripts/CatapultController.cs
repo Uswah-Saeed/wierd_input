@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using DG.Tweening;
 
 public class CatapultController : MonoBehaviour
 {
@@ -145,7 +146,6 @@ public class CatapultController : MonoBehaviour
         float currentPullback = restingAngle - currentAngle;
         float powerPercentage = currentPullback / pullbackRange;
         float finalForce = baseShootingForce * (1 + powerPercentage * forceFactor);
-        print(finalForce);
         return finalForce; // final force based on how much the arm is down
     }
 
@@ -186,6 +186,8 @@ public class CatapultController : MonoBehaviour
         if (rb != null)
         {
             rb.linearVelocity = -GetLanchDirection() * GetFinalForce(); //?? fixme
+            SoundManager.Instance.PlayCatapultShootSound();
+            transform.DOShakePosition(0.1f, Vector3.forward, 1, 1, false, true, ShakeRandomnessMode.Harmonic);
         }
         else { print("FFFFFFFFFFFFuuuuuu"); }
 

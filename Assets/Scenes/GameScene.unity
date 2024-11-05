@@ -42,7 +42,8 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -11189,10 +11190,10 @@ MonoBehaviour:
     type: 3}
   enemyProjectileHitAudioClip: {fileID: 8300000, guid: abcc8ef82f3044e69b81dffc06336c48,
     type: 3}
-  enemyDeadAudioClip: {fileID: 0}
-  successAudioClip: {fileID: 8300000, guid: d15d3e4fa7d024f8381205cfa9dad7f4, type: 3}
-  failureAudioClip: {fileID: 8300000, guid: d15d3e4fa7d024f8381205cfa9dad7f4, type: 3}
-  uiButtonAudioClip: {fileID: 0}
+  enemyDeadAudioClip: {fileID: 8300000, guid: d15d3e4fa7d024f8381205cfa9dad7f4, type: 3}
+  successAudioClip: {fileID: 8300000, guid: 8b21f5191c5244f29b3210f55d2e5a46, type: 3}
+  failureAudioClip: {fileID: 8300000, guid: b0ccd54a3329f496a995bd68988f17ae, type: 3}
+  uiButtonAudioClip: {fileID: 8300000, guid: 571f140d52dc54046a61eb5a62c7b7f5, type: 3}
 --- !u!4 &752988176
 Transform:
   m_ObjectHideFlags: 0
@@ -15262,17 +15263,17 @@ PrefabInstance:
     - target: {fileID: 6261301708742675596, guid: 1e89c349ba28b344a8a852702e0322d6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.60357
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6261301708742675596, guid: 1e89c349ba28b344a8a852702e0322d6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.8518689
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6261301708742675596, guid: 1e89c349ba28b344a8a852702e0322d6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.6003221
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6261301708742675596, guid: 1e89c349ba28b344a8a852702e0322d6,
         type: 3}
@@ -15332,11 +15333,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2512930070619731419, guid: 1e89c349ba28b344a8a852702e0322d6,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2000325409}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e89c349ba28b344a8a852702e0322d6, type: 3}
 --- !u!1001 &962567129
 PrefabInstance:
@@ -15405,6 +15402,7 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194230}
+  - component: {fileID: 963194231}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -15530,6 +15528,26 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &963194231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36013d775e823c543851a2de7b319868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoomOutEase: 21
+  zoomInEase: 30
+  duration: 0.2
+  strength: {x: 0.1, y: 0.2, z: 0.1}
+  vibrato: 10
+  randomness: 10
+  fadeOut: 1
+  randomnessMode: 1
 --- !u!1001 &965591938
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16840,7 +16858,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1056220936}
   m_Layer: 5
-  m_Name: PlayerDamage_1
+  m_Name: PlayerDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23115,8 +23133,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 26.188095, y: 3.62, z: 21.02}
-  m_Center: {x: 5.4028816, y: 1.4115288, z: -4.73}
+  m_Size: {x: 21.7126, y: 3.62, z: 7.5322695}
+  m_Center: {x: 0.10270691, y: 0, z: 0.2313174}
 --- !u!114 &1520452686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30968,19 +30986,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 962370091}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2000325409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2000325408}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36013d775e823c543851a2de7b319868, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ease: 30
 --- !u!1001 &2001892276
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31910,7 +31915,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7145463, g: 1, b: 0.4575472, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -33841,9 +33846,9 @@ SceneRoots:
   - {fileID: 705507995}
   - {fileID: 487170406}
   - {fileID: 1457378322}
-  - {fileID: 812227384}
-  - {fileID: 752988176}
   - {fileID: 2002297827}
+  - {fileID: 812227384}
   - {fileID: 628130829}
   - {fileID: 962370091}
   - {fileID: 1441159798}
+  - {fileID: 752988176}

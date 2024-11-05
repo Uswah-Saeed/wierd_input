@@ -13,14 +13,6 @@ public class Health : MonoBehaviour
         UpdateHealthSlider(); // Update the health slider UI
     }
 
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Projectile")) // Check for collision with a projectile
-    //    {
-    //        TakeDamage(damageFactor); // Reduce health
-    //        Destroy(collision.gameObject); // Destroy the projectile on collision
-    //    }
-    //}
 
     public void TakeDamage(float amount)
     {
