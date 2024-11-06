@@ -13,6 +13,7 @@ public class Manager : MonoBehaviour
     GameObject Ship;
     public float bobDuration, swayAngle, swayDuration;
     public Vector3 bobHeight;
+    public Sprite WinButton, LoseButton;
 
     [SerializeField] private Button menuButton;
     [SerializeField] private Button replayButton;
@@ -48,10 +49,14 @@ public class Manager : MonoBehaviour
         {
             Win.SetActive(true); 
             Lose.SetActive(false);
+            menuButton.GetComponent<Image>().sprite = WinButton;
+            replayButton.GetComponent<Image>().sprite = WinButton;
             SoundManager.Instance.PlaySuccessSound();
         }
         else
         {
+            menuButton.GetComponent<Image>().sprite = LoseButton;
+            replayButton.GetComponent<Image>().sprite = LoseButton;
             Win.SetActive(false); 
             Lose.SetActive(true);
             SoundManager.Instance.PlayFailureSound();

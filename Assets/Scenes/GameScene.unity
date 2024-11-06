@@ -42,8 +42,7 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 13
-  m_BakeOnSceneLoad: 0
+  serializedVersion: 12
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -9447,6 +9446,8 @@ MonoBehaviour:
   swayAngle: 2
   swayDuration: 3
   bobHeight: {x: 5, y: 1.45, z: 2}
+  WinButton: {fileID: 21300000, guid: f891f58dcf4a1144a9e317486dc145d4, type: 3}
+  LoseButton: {fileID: 21300000, guid: d7f2e44e7c810964fa10412c16cce578, type: 3}
   menuButton: {fileID: 1296944735}
   replayButton: {fileID: 1917591807}
 --- !u!4 &628130829
@@ -20083,8 +20084,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -200, y: 60}
-  m_SizeDelta: {x: 300, y: 128}
+  m_AnchoredPosition: {x: -182, y: 60}
+  m_SizeDelta: {x: 331, y: 123}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1296944735
 MonoBehaviour:
@@ -20150,7 +20151,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ae10a0cbf76d7c24abc80ac1a2f3cdee, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d7f2e44e7c810964fa10412c16cce578, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -24000,8 +24001,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 3.5}
+  m_SizeDelta: {x: 0, y: -7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1552614271
 MonoBehaviour:
@@ -24032,8 +24033,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4288568322
-  m_fontColor: {r: 0.007843138, g: 0.36078432, b: 0.61960787, a: 1}
+    rgba: 4281941823
+  m_fontColor: {r: 0.24705884, g: 0.24705884, b: 0.22352943, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -24050,13 +24051,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 55
-  m_fontSizeBase: 55
+  m_fontSize: 41.5
+  m_fontSizeBase: 41.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -26362,8 +26363,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 3.5}
+  m_SizeDelta: {x: 0, y: -7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1700444761
 MonoBehaviour:
@@ -26394,8 +26395,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4288568322
-  m_fontColor: {r: 0.007843138, g: 0.36078432, b: 0.61960787, a: 1}
+    rgba: 4281941823
+  m_fontColor: {r: 0.24705884, g: 0.24705884, b: 0.22352943, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -26412,13 +26413,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 55
-  m_fontSizeBase: 55
+  m_fontSize: 41.5
+  m_fontSizeBase: 41.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -29747,8 +29748,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 200, y: 60}
-  m_SizeDelta: {x: 300, y: 128}
+  m_AnchoredPosition: {x: 218, y: 60}
+  m_SizeDelta: {x: 331, y: 123}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1917591807
 MonoBehaviour:
@@ -29814,7 +29815,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ae10a0cbf76d7c24abc80ac1a2f3cdee, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d7f2e44e7c810964fa10412c16cce578, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

@@ -42,8 +42,7 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 13
-  m_BakeOnSceneLoad: 0
+  serializedVersion: 12
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -585,7 +584,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 17.563, y: -3.204}
+  m_AnchoredPosition: {x: 3, y: 38}
   m_SizeDelta: {x: 187.09, y: 62.663}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &999441242
@@ -617,8 +616,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4291912704
-  m_fontColor: {r: 0, g: 0.3921569, b: 0.8196079, a: 1}
+    rgba: 4292046370
+  m_fontColor: {r: 0.13333334, g: 0.43137258, b: 0.82745105, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -721,7 +720,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7.970993, y: 0.8860016}
+  m_AnchoredPosition: {x: 7.970993, y: 37}
   m_SizeDelta: {x: 206.277, y: 101.772}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1155387495
@@ -731,7 +730,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1155387493}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -744,7 +743,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: ae10a0cbf76d7c24abc80ac1a2f3cdee, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
