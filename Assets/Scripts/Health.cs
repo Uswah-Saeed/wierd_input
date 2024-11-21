@@ -14,17 +14,19 @@ public class Health : MonoBehaviour
     }
 
 
-    public void TakeDamage(float amount)
+    public void TakeDamage(float amount, Animator animator)
     {
         currentHealth -= amount; // Reduce current health
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth); // Clamp to prevent negative health
         UpdateHealthSlider(); // Update the health slider
+        animator.Play("Hit");
 
         if (currentHealth <= 0)
         {
                 Manager.instance.CallummaryMenu(!isCatapult);
                 Destroy(this.gameObject);
         }
+
     }
 
     private void UpdateHealthSlider()

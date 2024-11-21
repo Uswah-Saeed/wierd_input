@@ -11,20 +11,33 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private VideoPlayer gameBackStoryVideo;
     [SerializeField] private Button playButton;
     [SerializeField] private Button skipButton;
-
+    public AudioSource BackgroundMusic;
 
     private void Awake()
     {
+
+        StartCoroutine(PlayButtonActive());
+
+    }
+    private IEnumerator PlayButtonActive()
+    {
+        BackgroundMusic.Play();
+        videoUI.gameObject.SetActive(false);
+
+        playButton.gameObject.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+        playButton.gameObject.SetActive(true);
         playButton.onClick.AddListener(() =>
         {
             PlayButtonAction();
         });
         skipButton.onClick.AddListener(() =>
-        { 
-            SkipButtonAction(); 
+        {
+            SkipButtonAction();
         });
+        yield break;
+           
 
-        videoUI.gameObject.SetActive(false);
     }
 
     private void PlayButtonAction()
@@ -40,6 +53,7 @@ public class MainMenuManager : MonoBehaviour
         yield return new WaitForSeconds(1);
         videoUI.gameObject.SetActive(true);
         yield return new WaitForSeconds((float)(gameBackStoryVideo.length + 0.5f));
+        BackgroundMusic.Stop();
         SceneManager.LoadScene(1);
     }
 
