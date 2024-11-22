@@ -118,6 +118,9 @@ public class CatapultController : MonoBehaviour
 
     public void ShootBall()
     {
+        
+
+        StopAllCoroutines();
         StartCoroutine(ShootSequence_IE());
     }
     private void UpdateTrajectory()

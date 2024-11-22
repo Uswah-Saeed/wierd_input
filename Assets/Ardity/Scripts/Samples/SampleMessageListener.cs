@@ -19,6 +19,7 @@ public class SampleMessageListener : MonoBehaviour
 
     public static float msgValue;
     public static float msg2Value;
+    [SerializeField] CatapultRotator rotator;
     // Invoked when a line of data is received from the serial device.
     void OnMessageArrived(string msg)
     {
@@ -33,6 +34,7 @@ public class SampleMessageListener : MonoBehaviour
             msg2Value = value2;
         }
         Debug.Log("Message arrived: " + msg);
+       
     }
 
     // Invoked when a connect/disconnect event occurs. The parameter 'success'

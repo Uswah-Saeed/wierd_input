@@ -10,8 +10,8 @@ public class ShaftRotator : MonoBehaviour
     [SerializeField]
     CatapultController controller;
     // Define your accelerometer value range and rotation angle range
-    private float accelerometerMin = 2.39f; // Minimum accelerometer value
-    private float accelerometerMax = 10f;    // Maximum accelerometer value
+    private float accelerometerMin = -8.67f; // Minimum accelerometer value
+    private float accelerometerMax = 1.7f;    // Maximum accelerometer value
     private float rotationMin = 50f;         // Minimum rotation angle
     private float rotationMax = -10f;        // Maximum rotation angle
 
@@ -36,27 +36,23 @@ public class ShaftRotator : MonoBehaviour
             Quaternion currentRotation = shaft.rotation;
             Quaternion targetQuaternion = Quaternion.Euler(targetRotation);
             shaft.rotation = Quaternion.Lerp(currentRotation, targetQuaternion, currentSmoothingSpeed * Time.deltaTime);
-
-            if (currentValue > 3 && lastValue < 3)
+            Debug.Log("C "+currentValue*-1 + "Sh "+ lastValue*-1);
+            if (currentValue*-1 <6  && lastValue*-1>6   )
             {
 
                 CameraController.Instance.ZoomOut();
 
 
             }
+            // Debug.Log("Cvalu   " + currentValue + "Lvalue  " + lastValue);
             // Check for the condition to call the Shoot function
-            if ((currentValue >= -1 && currentValue <= 3 && lastValue > 4) || (currentValue >= -1 && currentValue <= 3 && lastValue < -10))
+            if ((currentValue*-1 >= 7  && lastValue*-1 <6 ) )
             {
                 Shoot(); // Call the Shoot function
-             
+
             }
 
-            if (currentValue >3 && lastValue<3) {
-            
-                    CameraController.Instance.ZoomOut();
-            
-            
-            }
+
 
             // Update lastValue for the next frame
             lastValue = currentValue;

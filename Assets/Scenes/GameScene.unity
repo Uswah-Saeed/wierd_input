@@ -15261,6 +15261,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sample
       objectReference: {fileID: 0}
+    - target: {fileID: 3054383572318363735, guid: 1e89c349ba28b344a8a852702e0322d6,
+        type: 3}
+      propertyPath: rotator
+      value: 
+      objectReference: {fileID: 1520452687}
     - target: {fileID: 6261301708742675596, guid: 1e89c349ba28b344a8a852702e0322d6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -23165,7 +23170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   catapult: {fileID: 1520452684}
-  minMagnetometerValue: 150
+  minMagnetometerValue: 200
   maxMagnetometerValue: 230
   minRotation: 15
   maxRotation: -15
