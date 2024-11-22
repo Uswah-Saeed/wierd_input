@@ -69,8 +69,8 @@ public class CatapultController : MonoBehaviour
 
         if (canShoot)
         {
-            HandleInput();
-            trajectoryLine.enabled = currentAngle < restingAngle;
+            //HandleInput();
+           // trajectoryLine.enabled = currentAngle < restingAngle;
         }
     }
 

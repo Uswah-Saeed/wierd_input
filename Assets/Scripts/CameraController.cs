@@ -35,9 +35,11 @@ public class CameraController : MonoBehaviour
 
     public void ZoomIn()
     {
+       
         cameraTweener ??= mainCamera.DOFieldOfView(60, 0.5f)
         .SetEase(zoomInEase)
-        .OnComplete(() => { cameraTweener = null; });
+        .OnComplete(() => { Debug.LogWarning("Zoomed In"); cameraTweener = null; });
+        Debug.LogWarning("Zoomedasdads In");
     }
 
     [ContextMenu("CameraShake")]

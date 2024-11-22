@@ -10,8 +10,8 @@ public class ShaftRotator : MonoBehaviour
     [SerializeField]
     CatapultController controller;
     // Define your accelerometer value range and rotation angle range
-    private float accelerometerMin = 2.39f; // Minimum accelerometer value
-    private float accelerometerMax = 10f;    // Maximum accelerometer value
+    private float accelerometerMin = -8.67f; // Minimum accelerometer value
+    private float accelerometerMax = 1.7f;    // Maximum accelerometer value
     private float rotationMin = 50f;         // Minimum rotation angle
     private float rotationMax = -10f;        // Maximum rotation angle
 
@@ -24,7 +24,7 @@ public class ShaftRotator : MonoBehaviour
         {
             // Get the current value from the accelerometer
             float currentValue = SampleMessageListener.msgValue;
-
+        
             // Calculate the mapped rotation angle based on accelerometer value
             float rotationAngle = Map(currentValue, accelerometerMin, accelerometerMax, rotationMin, rotationMax);
             targetRotation = new Vector3(rotationAngle, catapultScript.catapult.localEulerAngles.y, 0);
@@ -37,26 +37,22 @@ public class ShaftRotator : MonoBehaviour
             Quaternion targetQuaternion = Quaternion.Euler(targetRotation);
             shaft.rotation = Quaternion.Lerp(currentRotation, targetQuaternion, currentSmoothingSpeed * Time.deltaTime);
 
-            if (currentValue > 3 && lastValue < 3)
+            if (currentValue > -5  && lastValue > -5 && (currentValue!=0 && lastValue !=0 ))
             {
 
                 CameraController.Instance.ZoomOut();
 
 
             }
+           // Debug.Log("Cvalu   " + currentValue + "Lvalue  " + lastValue);
             // Check for the condition to call the Shoot function
-            if ((currentValue >= -1 && currentValue <= 3 && lastValue > 4) || (currentValue >= -1 && currentValue <= 3 && lastValue < -10))
+            if ((currentValue <= -6 && currentValue >= -9 && lastValue >-6) || (currentValue <= -6 && currentValue >= -9 && lastValue > 3))
             {
                 Shoot(); // Call the Shoot function
              
             }
 
-            if (currentValue >3 && lastValue<3) {
-            
-                    CameraController.Instance.ZoomOut();
-            
-            
-            }
+           
 
             // Update lastValue for the next frame
             lastValue = currentValue;
