@@ -26,7 +26,7 @@ public class Projectile : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Ship"))
         {
-            E_Health.TakeDamage(10);
+            E_Health.TakeDamage(10, Manager.instance.EnemyIconAnimator);
             SoundManager.Instance.PlayProjectileHitSound();
             GameObject vfx = Instantiate(explosion, this.transform.position, Quaternion.identity);
             vfx.GetComponent<ParticleSystem>().Play();

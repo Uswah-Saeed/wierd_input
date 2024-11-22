@@ -24,7 +24,7 @@ public class EnemyProjectile : MonoBehaviour
         if (collision.gameObject.CompareTag("Catapult"))
         {
             CameraController.Instance.CameraShake();
-            P_Health.TakeDamage(10);
+            P_Health.TakeDamage(10, Manager.instance.PlayerIconAnimator);
             GameObject vfx = Instantiate(explosion, this.transform.position, Quaternion.identity);
             vfx.GetComponent<ParticleSystem>().Play();
             Destroy(vfx, 2f);

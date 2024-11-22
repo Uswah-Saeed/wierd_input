@@ -17,6 +17,8 @@ public class Manager : MonoBehaviour
 
     [SerializeField] private Button menuButton;
     [SerializeField] private Button replayButton;
+    public Animator EnemyIconAnimator;
+    public Animator PlayerIconAnimator;
 
 
     private void Awake()
